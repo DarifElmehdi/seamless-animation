@@ -1,0 +1,134 @@
+.orbit {
+    --orbit-speed: 40s;
+    --image-height: 12rem;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .center-image {
+        position: absolute;
+        height: var(--image-height);
+        aspect-ratio: 1 / 1;
+        z-index: 10;
+        img {
+            position: absolute;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            transition: opacity 500ms;
+            &:last-child:hover {
+                opacity: 0;
+            }
+        }
+    }
+    ul {
+        list-style: none;
+        position: absolute;
+        height: 8rem;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        animation: orbit var(--orbit-speed) infinite;
+        &:hover {
+            animation-play-state: paused;
+            --play-state: paused;
+        }
+
+        li {
+            box-sizing: content-box;
+            position: absolute;
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 50%;
+            background-color: var(--icon-bg);
+            &:hover {
+                :first-child {
+                    opacity: 0;
+                }
+                :last-child {
+                    opacity: 1;
+                }
+                background-color: var(--text-bg);
+            }
+            img {
+                transition: opacity 500ms;
+                opacity: 1;
+            }
+            p {
+                transition: opacity 500ms;
+                color: var(--white-light);
+                font-size: 1rem;
+                font-weight: 600;
+                width: 80%;
+                opacity: 0;
+            }
+
+            & > * {
+                position: absolute;
+                animation: r-orbit var(--orbit-speed) infinite;
+                animation-play-state: var(--play-state);
+            }
+        }
+        li:nth-child(1) {
+            --icon-bg: var(--blue-light);
+            --text-bg: var(--blue-dark);
+            transform: translate(15rem, 0rem);
+        }
+
+        li:nth-child(2) {
+            --icon-bg: var(--green-light);
+            --text-bg: var(--green-dark);
+            transform: translate(10.61rem, 10.61rem);
+        }
+
+        li:nth-child(3) {
+            --icon-bg: var(--pink-light);
+            --text-bg: var(--pink-dark);
+            transform: translate(0, 15rem);
+        }
+        li:nth-child(4) {
+            --icon-bg: var(--red-light);
+            --text-bg: var(--red-dark);
+            transform: translate(-10.61rem, 10.61rem);
+        }
+
+        li:nth-child(5) {
+            --icon-bg: var(--brown-light);
+            --text-bg: var(--brown-dark);
+            transform: translate(-15rem, 0rem);
+        }
+
+        li:nth-child(6) {
+            --icon-bg: var(--yellow-light);
+            --text-bg: var(--yellow-dark);
+            transform: translate(-10.61rem, -10.61rem);
+        }
+
+        li:nth-child(7) {
+            --icon-bg: var(--purple-light);
+            --text-bg: var(--purple-dark);
+            transform: translate(0, -15rem);
+        }
+        li:nth-child(8) {
+            --icon-bg: var(--orange-light);
+            --text-bg: var(--orange-dark);
+            transform: translate(10.61rem, -10.61rem);
+        }
+    }
+}
+
+@keyframes orbit {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes r-orbit {
+    100% {
+        transform: rotate(-1turn);
+    }
+}
